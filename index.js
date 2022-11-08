@@ -19,7 +19,13 @@ async function run() {
         const serviceCollection = client.db('goFood').collection('services')
         const reviewsCollection = client.db('goFood').collection('reviews')
 
-        console.log('hii')
+        app.post('/service', async (req, res) => {
+            const query = req.body;
+            const result = await serviceCollection.insertOne(query)
+            res.send(result)
+        })
+
+
 
     } catch (error) {
         console.log(error.message, error.status)
